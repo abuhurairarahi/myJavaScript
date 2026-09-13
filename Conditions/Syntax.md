@@ -1,8 +1,10 @@
-#Comparsion Operators:
+# Comparison Operators
 
-1. > greater than
-2. < less than
-3. >= greater equals to
-4. <= less equals to
-5. === equals to
-6. !== not equals to
+| Operator | Meaning                  |
+| :------: | ------------------------ |
+|    `>`   | Greater than             |
+|    `<`   | Less than                |
+|   `>=`   | Greater than or equal to |
+|   `<=`   | Less than or equal to    |
+|   `===`  | Equal to                 |
+|   `!==`  | Not equal to             |
