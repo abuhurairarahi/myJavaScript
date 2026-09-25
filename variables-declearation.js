@@ -32,3 +32,7 @@ console.log("Boolean: " + bool);
 
 //printing as table
 console.table([variable, autoVariable, autoNumberVar, undefinedVariable]);
+
+//know the unknown value's datatype using 'typeof'
+datatypeName = typeof null;
+console.log(datatypeName);
