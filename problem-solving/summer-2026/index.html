@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Prog 261</title>
+</head>
+
+<body>
+    
+    <!-- input-form -->
+    <form onsubmit="countStudyHours(event)">
+        <label>Subject Name</label>
+        <input type="text" id="subject-Name">
+        <br>
+        <label>Study Hours</label>
+        <input type="text" id="study-Hours">
+        <br>
+        <input type="submit" value="Add Study">
+    </form>
+    
+    <br>
+
+    <!-- display-reset -->
+    <button onclick="display()">Display All Data</button> 
+    <button onclick="reset()">Reset</button>
+
+    <!-- output -->
+    <p id="total-study-hours"></p>
+    <p id="average-study-hours"></p>
+    <p id="subject-studied"></p>
+    <p id="study-feedback"></p>
+
+    <!-- javascript-connection -->
+    <script src="/problem-solving/summer-2026/function.js"></script>
+
+</body>
+
+</html>
