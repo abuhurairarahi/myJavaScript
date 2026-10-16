@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form onsubmit="checkstrength(event)">
+        <input type="password" id="pass">
+        <input type="submit" value="Check Strength">
+    </form>
+
+    <br><br>
+
+    <div id="message">Status: Default Status</div>
+
+    <script>
+        function checkstrength(event) {
+
+            event.preventDefault();
+            let totalpoint = 0;
+            let userpass;
+            let status;
+            let lengthPoint = 0;
+
+            userpass = document.getElementById('pass').value;
+            let strLength = userpass.length;
+            //console.log(strLength);
+
+            if (strLength >= 6) {
+                let pairchar = Math.floor(strLength / 2);
+                lengthPoint = (pairchar * 10);
+                totalpoint += lengthPoint;
+                //console.log(pairchar);
+            }
+
+            /*
+            if (/[A-Z]/.test(userpass)) {
+                totalpoint += 15;
+            }
+            if (/[a-z]/.test(userpass)) {
+                totalpoint += 15;
+            }
+            if (/[0-9]/.test(userpass)) {
+                totalpoint += 20;
+            }
+            if (/[!@#$%^&*]/.test(userpass)) {
+                totalpoint += 25;
+            }*/
+
+            let countUppercase = 0;
+            let countlowercase = 0;
+            let countnumbers = 0;
+            let countspecialchar = 0;
+
+            for (let i = 0; i < strLength; i++) {
+
+                if (userpass[i] >= 'A' && userpass[i] <= 'Z') {
+                    countUppercase++;
+                }
+                if (userpass[i] >= 'a' && userpass[i] <= 'z') {
+                    countlowercase++;
+                }
+                if (userpass[i] >= '0' && userpass[i] <= '9') {
+                    countnumbers++;
+                }
+                if (userpass[i] === '!' || userpass[i] === '@' || userpass[i] === '#' || userpass[i] === '$' || userpass[i] === '%' || userpass[i] === '^' || userpass[i] === '&' || userpass[i] === '*') {
+                    countspecialchar++;
+                }
+            }
+
+            //console.log(totalpoint);
+
+            if (countUppercase > 0) {
+                totalpoint += 15;
+                //console.log(countUppercase, totalpoint);
+            }
+            if (countlowercase > 0) {
+                totalpoint += 15;
+                //console.log(countlowercase, totalpoint);
+            }
+            if (countnumbers > 0) {
+                totalpoint += 20;
+                //console.log(countnumbers, totalpoint);
+            }
+            if (countspecialchar > 0) {
+                totalpoint += 25;
+                //console.log(countspecialchar, totalpoint);
+            }
+
+
+            if (totalpoint > 0 && totalpoint <= 30) {
+                status = "Very Weak";
+            }
+            else if (totalpoint >= 31 && totalpoint <= 50) {
+                status = "Weak";
+            }
+            else if (totalpoint >= 51 && totalpoint <= 70) {
+                status = "Medium";
+            }
+            else if (totalpoint >= 71 && totalpoint <= 90) {
+                status = "Strong";
+            }
+            else if (totalpoint >= 91 && totalpoint <= 100) {
+                status = "Very Strong";
+            }
+            else if (totalpoint > 100) {
+                status = "Perfect Password!";
+            }
+            else {
+                status = "invalid";
+            }
+
+            document.getElementById('message').innerHTML = "Status: " + status;
+        }
+    </script>
+</body>
+
+</html>

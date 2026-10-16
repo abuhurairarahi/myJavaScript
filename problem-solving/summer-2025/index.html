@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        form {
+            padding: 10px;
+            width: 300px;
+        }
+        form div {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        form input {
+            width: 100%;
+            padding: 10px;
+        }
+        #btn {
+            width: 50%;
+            margin-top: 10px;
+        }
+        #display {
+            padding: 10px;
+            font-size: 20px;
+        }
+    </style>
+    <form onsubmit="calculate_calories(event)">
+        <div>Enter Consumed Calories</div>
+        <input type="number" id="calInput"> <br>
+        <input type="submit" value="Add Calories" id="btn">
+    </form>
+
+    <br><br>
+    <div id="display">Message: Default Message</div>
+
+    <script>
+        let goal = 2000;
+        let totalCal = 0;
+        let inputCalories = 0;
+        let count = 0;
+        let status;
+
+        function calculate_calories(event) {
+            //pervent instant reload
+            event.preventDefault();
+
+            //taken input
+            inputCalories = Number(document.getElementById('calInput').value);
+            
+            count++;
+
+            //functions
+            totalCal += inputCalories;
+
+            if(count > 10 && totalCal < goal) {
+                status = "Be cautious of frequent snaking!";
+            }
+            else if(totalCal > 0 && totalCal <= 800) {
+                status = "You're off to a healthy start!";
+            }
+            else if (totalCal > 800 && totalCal <= 1600) {
+                status =  "Good progress, keep it balanced!";
+            }
+            else if(totalCal > 1600  && totalCal <= 1999) {
+                status = "“Almost at your limit!";
+            }
+            else if(totalCal >= goal) {
+                status = "Goal reached! Stay mindful!";
+            }
+            else {
+                status = "Invalid";
+            }
+
+            //output
+            document.getElementById('display').innerHTML = "Message: " + status;
+        }
+    </script>
+</body>
+</html>

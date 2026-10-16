@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form onsubmit="matchguess(event)">
+        <div>Enter your guess:</div>
+        <input type="text" id="userguess"> <br>
+        <input type="submit">
+    </form>
+
+    <div id="feedback">feedback</div>
+    <div id="result">default</div>
+
+    <script>
+
+        let randomNumber = Math.floor(Math.random() * (5000 - 500 + 1)) + 500;
+        console.log(randomNumber);
+        let count = 1;
+        let result;
+        let feedback = [];
+
+        function matchguess(event) {
+            event.preventDefault();
+            let inputGuess = Number(document.getElementById('userguess').value);
+            
+            if(inputGuess === randomNumber) {
+                result = "Correct!";
+                feedback.push(result);
+                document.getElementById('userguess').disabled = true;
+            }
+            if(count === 5) {
+                result = "Out of guesses!"
+                document.getElementById('userguess').disabled = true;
+            }
+            else if(inputGuess > randomNumber) {
+                result = "Too High!";
+                feedback.push(result);
+            }
+            else if(inputGuess < randomNumber) {
+                result = "TOo Low!";
+                feedback.push(result);
+            }
+            
+
+            document.getElementById('feedback').innerHTML = feedback.join(",");
+            document.getElementById('result').innerHTML = result;
+
+            count++;
+        }
+
+    </script>
+</body>
+</html>
